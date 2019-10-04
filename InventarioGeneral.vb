@@ -145,7 +145,7 @@ Public Class InventarioGeneral
                 Dim consultaVUnitario As String = valorUnitario2().ToString
 
                 Dim consult0 As New MySqlCommand("INSERT INTO `detalle_factura`(`IdFactura`,`NoFactura`, `Concepto`, `ValorUnitario`, `ValorTotal`, `CantidadTotal`, `Proveedor`, `FechaCompra`,`factura`) VALUES 
-(null,'" & TextBoxNumFac2.Text & "','" & consultaConcepto & "','" & consultaVUnitario & "','" & labelValor2.Text & "','" & TextBoxCantid2.Text & "','" & TextBoxVend2.Text.ToUpper & "','" & DateTimePickerFC2.Value.ToLongDateString & "',?imagen)", llamado0.conexion)
+(null,'" & TextBoxNumFac2.Text & "','" & consultaConcepto & "','" & consultaVUnitario & "','" & labelValor2.Text & "','" & TextBoxCantid2.Text & "','" & TextBoxVend2.Text.ToUpper & "','" & String.Format(DateTimePickerFC2.Value, "yyyy-MM-dd HH:mm:ss") & "',?imagen)", llamado0.conexion)
                 llamado0.AbrirConexion()
 
                 consult0.Parameters.AddWithValue("?imagen", Imagen_Bytes(Me.PictureBoxFactura2.Image))
@@ -162,9 +162,9 @@ Public Class InventarioGeneral
                     If numeroOletra = 1 Then
                         MsgBox("as")
                         Dim agregar As New MySqlCommand(" INSERT INTO `inventarioactivos`(`serialMovilco`,`NoFacturaA`, `articuloA`, `marcaArticuloA`, `serialArticuloA`,
-`estadoArticuloA`, `valorpromedioA`, `observacionesA`, `fechaRegistroG`, `oficinaG`,`coordinadorCvs`,direccionCvs,`correoElectric`, `telefono`,estado)
+`estadoArticuloA`, `valorpromedioA`, `observacionesA`, `fechaRegistroG`, `oficinaG`,`coordinadorCvs`,direccionCvs,`correoElectric`, `telefono`,`estado`)
 VALUES (?serialMovilco, ?NoFactura,?articuloA, ?marcaArticuloA, ?serialArticuloA, ?estadoArticuloA,?valorpromedioA,
-?observacionesA,'" & DateTimePickerIG.Value.ToShortDateString & "','" & ComboBoxOficina.SelectedItem & "','" & txtDirectorAdmin.Text.ToUpper & "','" & TextBoxDireccion.Text.ToUpper & "','" & txtCorreoEl.Text.ToUpper & "', '" & txtTelefono.Text.ToUpper & "',?estado)", llamado2.conexion)
+?observacionesA,?fechaRegistroG,'" & ComboBoxOficina.SelectedItem & "','" & txtDirectorAdmin.Text.ToUpper & "','" & TextBoxDireccion.Text.ToUpper & "','" & txtCorreoEl.Text.ToUpper & "', '" & txtTelefono.Text.ToUpper & "',?estado)", llamado2.conexion)
                         llamado2.AbrirConexion()
 
                         Dim fila As New DataGridViewRow()
@@ -181,6 +181,7 @@ VALUES (?serialMovilco, ?NoFactura,?articuloA, ?marcaArticuloA, ?serialArticuloA
                             agregar.Parameters.Add("?valorpromedioA", MySqlDbType.Float).Value = Convert.ToString(fila.Cells("ValorPromedio").Value)
                             agregar.Parameters.Add("?observacionesA", MySqlDbType.VarChar).Value = Convert.ToString(fila.Cells("Observaciones").Value).ToUpper
                             agregar.Parameters.Add("?estado", MySqlDbType.VarChar).Value = Convert.ToString(fila.Cells("ComboBoxIG").Value).ToUpper
+                            agregar.Parameters.Add("?fechaRegistroG", MySqlDbType.VarChar).Value = String.Format(DateTimePickerIG.Value, "yyyy-MM-dd HH:mm:ss")
 
                             trycach = 1
 

@@ -223,6 +223,7 @@ or serialArticuloA like '%" & TextBoxBusqueda.Text & "%' or articuloA like'%" & 
     End Sub
 
     Private Sub ButtonInvSist_Click(sender As Object, e As EventArgs) Handles ButtonInvSist.Click
+        DataGridView111.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader
         TextBoxBusqueda.Enabled = True
         ButtonLimpiarB.Enabled = True
         Label3.Visible = False
@@ -249,7 +250,7 @@ or serialArticuloA like '%" & TextBoxBusqueda.Text & "%' or articuloA like'%" & 
         Try
 
 
-            Dim cmd5 As New MySqlCommand("SELECT `codigoArticuloH` AS 'SERIAL MOVILCO',`serialArticuloSoft` AS 'CODIGO ARTICULO',`tipoArticuloH` AS ARTICULO,
+            Dim cmd5 As New MySqlCommand("SELECT `codigoArticuloH` AS 'SERIAL MOVILCO',`serialArticuloSoft` AS 'CODIGO ARTICULO',`NoFacturaH` AS 'No. FACTURA',`tipoArticuloH` AS ARTICULO,
 `marcaArticuloH` AS MARCA,`estadoArticuloH` AS 'CONDICION ARTICULO',`oficinaH` AS OFICINA,`tonnerH` AS TONNER,`capacidadDdH` AS 'CAPACIDAD DISCO D.',`memoriaRamH` AS 'MEMORIA RAM',
 `sistemaOperativo` AS 'SISTEMA OP',`mOffice` AS OFFICE,`hClient` 'H CLIENT',`dropBox` AS DROPBOX,`areaSoft` AS AREA,`screemView` AS 'SCREEM VIEW',`sicacomVPN` AS SICACOM,
 `adobePDF` AS 'ADOBE PDF',`adminTurno` AS 'ADMIN TURNO',`rrVpnFijo` AS 'VPN FIJO',`correoElectronico` AS CORREO,`numeroDemo` 'No DEMO',`anyDesk` AS 'ANNY DESK',`responsable` AS RESPONSABLE,
@@ -279,6 +280,7 @@ estado as ESTADO,`decripcionDetallesH` AS DETALLES,`fechaIngresoH` AS FECHA FROM
     End Sub
 
     Private Sub ButtonInvAc_Click(sender As Object, e As EventArgs) Handles ButtonInvAc.Click
+        DataGridView111.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader
         TextBoxBusqueda.Enabled = True
         ButtonLimpiarB.Enabled = True
         Label3.Visible = False
@@ -306,9 +308,9 @@ estado as ESTADO,`decripcionDetallesH` AS DETALLES,`fechaIngresoH` AS FECHA FROM
 
 
 
-            Dim cmd5 As New MySqlCommand("SELECT `serialMovilco` AS 'SERIAL MOVILCO',`serialArticuloA` AS 'SERIAL ARTICULO',`articuloA` AS ARTICULO,
-`marcaArticuloA` AS 'MARCA ARTICULO',`estadoArticuloA` AS 'CONDICION ARTICULO',`oficinaG` AS OFICINA,`dirAdmin` AS 'DIRECTOR ADMIN',`correoElectric` AS CORREO,`analistaVer` AS 'ANALISTA VERIF',
-`valorpromedioA` AS 'VALOR PROMEDIO', estado as ESTADO,`fechaRegistroG` AS 'FECHA REGISTRO',`observacionesA` AS OBSERVACIONES FROM `inventarioactivos` ", conexion.conexion)
+            Dim cmd5 As New MySqlCommand("SELECT `serialMovilco` AS 'SERIAL MOVILCO',`serialArticuloA` AS 'SERIAL ARTICULO',`NoFacturaA` AS 'No. FACTURA',`articuloA` AS ARTICULO,
+`marcaArticuloA` AS 'MARCA ARTICULO',`estadoArticuloA` AS 'CONDICION ARTICULO',`oficinaG` AS OFICINA,`coordinadorCvs` AS 'COORDINADOR',`correoElectric` AS CORREO,`telefono` AS 'TELEFONO',`direccionCvs` AS 'DIRECCION',
+`valorpromedioA` AS 'VALOR PROMEDIO', estado as ESTADO,`fechaRegistroG` AS 'FECHA REGISTRO',`observacionesA` AS OBSERVACIONES,`FechaDeIngreso` AS 'FECHA INGRESO' FROM `inventarioactivos` ", conexion.conexion)
 
             Dim cmd4 As New MySqlCommand("SELECT COUNT(idInventarioA) FROM `inventarioactivos` ", conexion.conexion)
             Dim datas2 As New DataSet
@@ -335,6 +337,7 @@ estado as ESTADO,`decripcionDetallesH` AS DETALLES,`fechaIngresoH` AS FECHA FROM
     End Sub
 
     Private Sub ButtonMovimiento_Click(sender As Object, e As EventArgs) Handles ButtonMovimiento.Click
+        DataGridView111.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         TextBoxBusqueda.Enabled = False
         ButtonLimpiarB.Enabled = False
         If InventarioSH.Label4.Text = "ADMINISTRADOR" Then
@@ -444,14 +447,14 @@ estado as ESTADO,`decripcionDetallesH` AS DETALLES,`fechaIngresoH` AS FECHA FROM
         Dim estado As String
         If (dondeestoy = 3) Then
 
-            estado = DataGridView111.Item(23, DataGridView111.CurrentRow.Index).Value
+            estado = DataGridView111.Item(24, DataGridView111.CurrentRow.Index).Value
             serialMovilco = DataGridView111.Item(0, DataGridView111.CurrentRow.Index).Value
             serialArticulo = DataGridView111.Item(1, DataGridView111.CurrentRow.Index).Value
             lblEstado.Text = estado
 
         ElseIf (dondeestoy = 1) Then
 
-            estado = DataGridView111.Item(10, DataGridView111.CurrentRow.Index).Value
+            estado = DataGridView111.Item(12, DataGridView111.CurrentRow.Index).Value
             serialMovilco = DataGridView111.Item(0, DataGridView111.CurrentRow.Index).Value
             serialArticulo = DataGridView111.Item(1, DataGridView111.CurrentRow.Index).Value
             lblEstado.Text = estado
@@ -492,7 +495,7 @@ estado as ESTADO,`decripcionDetallesH` AS DETALLES,`fechaIngresoH` AS FECHA FROM
 
                     Dim conexion As New connection
                     conexion.AbrirConexion()
-                    Dim cmd5 As New MySqlCommand("SELECT `codigoArticuloH` AS 'SERIAL MOVILCO',`serialArticuloSoft` AS 'CODIGO ARTICULO',`tipoArticuloH` AS ARTICULO,
+                    Dim cmd5 As New MySqlCommand("SELECT `codigoArticuloH` AS 'SERIAL MOVILCO',`serialArticuloSoft` AS 'CODIGO ARTICULO',`NoFacturaH` AS 'No. FACTURA',`tipoArticuloH` AS ARTICULO,
 `marcaArticuloH` AS MARCA,`estadoArticuloH` AS 'CONDICION ARTICULO',`oficinaH` AS OFICINA,`tonnerH` AS TONNER,`capacidadDdH` AS 'CAPACIDAD DISCO D.',`memoriaRamH` AS 'MEMORIA RAM',
 `sistemaOperativo` AS 'SISTEMA OP',`mOffice` AS OFFICE,`hClient` 'H CLIENT',`dropBox` AS DROPBOX,`areaSoft` AS AREA,`screemView` AS 'SCREEM VIEW',`sicacomVPN` AS SICACOM,
 `adobePDF` AS 'ADOBE PDF',`adminTurno` AS 'ADMIN TURNO',`rrVpnFijo` AS 'VPN FIJO',`correoElectronico` AS CORREO,`numeroDemo` 'No DEMO',`anyDesk` AS 'ANNY DESK',`responsable` AS RESPONSABLE,
@@ -529,13 +532,14 @@ estado as ESTADO,`decripcionDetallesH` AS DETALLES,`fechaIngresoH` AS FECHA FROM
 
                     Dim conexion1 As New connection
                     conexion1.AbrirConexion()
-                    Dim cmd51 As New MySqlCommand("SELECT `serialMovilco` AS 'SERIAL MOVILCO',`serialArticuloA` AS 'SERIAL ARTICULO',`articuloA` AS ARTICULO,
-`marcaArticuloA` AS 'MARCA ARTICULO',`estadoArticuloA` AS 'CONDICION ARTICULO',`oficinaG` AS OFICINA,`dirAdmin` AS 'DIRECTOR ADMIN',`correoElectric` AS CORREO,`analistaVer` AS 'ANALISTA VERIF',
-`valorpromedioA` AS 'VALOR PROMEDIO', estado as ESTADO,`fechaRegistroG` AS 'FECHA REGISTRO',`observacionesA` AS OBSERVACIONES FROM `inventarioactivos` ", conexion1.conexion)
+                    Dim cmd5 As New MySqlCommand("SELECT `serialMovilco` AS 'SERIAL MOVILCO',`serialArticuloA` AS 'SERIAL ARTICULO',`NoFacturaA` AS 'No. FACTURA',`articuloA` AS ARTICULO,
+`marcaArticuloA` AS 'MARCA ARTICULO',`estadoArticuloA` AS 'CONDICION ARTICULO',`oficinaG` AS OFICINA,`coordinadorCvs` AS 'COORDINADOR',`correoElectric` AS CORREO,`telefono` AS 'TELEFONO',`direccionCvs` AS 'DIRECCION',
+`valorpromedioA` AS 'VALOR PROMEDIO', estado as ESTADO,`fechaRegistroG` AS 'FECHA REGISTRO',`observacionesA` AS OBSERVACIONES,`FechaDeIngreso` AS 'FECHA INGRESO' FROM `inventarioactivos` ", conexion1.conexion)
+
 
                     Dim cmd41 As New MySqlCommand("SELECT COUNT(idInventarioA) FROM `inventarioactivos` ", conexion1.conexion)
                     Dim datas21 As New DataSet
-                    Dim adaptador11 As New MySqlDataAdapter(cmd51)
+                    Dim adaptador11 As New MySqlDataAdapter(cmd5)
                     adaptador11.Fill(datas21, "inventarioactivos")
                     DataGridView111.DataSource = datas21.Tables("inventarioactivos")
 

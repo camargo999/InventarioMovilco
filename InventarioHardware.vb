@@ -179,9 +179,9 @@ Public Class InventarioHardware
 
 
 
-                        Dim consult0 As New MySqlCommand("INSERT INTO `detalle_factura`(`IdFactura`,`NoFactura`, `Concepto`, `ValorUnitario`, `ValorTotal`, `CantidadTotal`, `Proveedor`, `FechaCompra`,`factura`) VALUES 
-(null,'" & TextBoxNumFac.Text & "','" & consultaConcepto & "','" & consultaVUnitario & "','" & labelValor.Text & "','" & TextBoxCantid.Text & "','" & TextBoxVend.Text.ToUpper & "','" & DateTimePickerFC.Value.ToLongDateString & "',?imagen)", llamado0.conexion)
-                        llamado0.AbrirConexion()
+                    Dim consult0 As New MySqlCommand("INSERT INTO `detalle_factura`(`IdFactura`,`NoFactura`, `Concepto`, `ValorUnitario`, `ValorTotal`, `CantidadTotal`, `Proveedor`, `FechaCompra`,`factura`) VALUES 
+(null,'" & TextBoxNumFac.Text & "','" & consultaConcepto & "','" & consultaVUnitario & "','" & labelValor.Text & "','" & TextBoxCantid.Text & "','" & TextBoxVend.Text.ToUpper & "','" & String.Format(DateTimePickerFC.Value, "yyyy-MM-dd HH:mm:ss") & "',?imagen)", llamado0.conexion)
+                    llamado0.AbrirConexion()
 
                         consult0.Parameters.AddWithValue("?imagen", Imagen_Bytes(Me.PictureBoxFactura.Image))
 
