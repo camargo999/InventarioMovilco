@@ -280,7 +280,11 @@ estado as ESTADO,`decripcionDetallesH` AS DETALLES,`fechaIngresoH` AS FECHA FROM
     End Sub
 
     Private Sub ButtonInvAc_Click(sender As Object, e As EventArgs) Handles ButtonInvAc.Click
+
         DataGridView111.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader
+
+
+
         TextBoxBusqueda.Enabled = True
         ButtonLimpiarB.Enabled = True
         Label3.Visible = False

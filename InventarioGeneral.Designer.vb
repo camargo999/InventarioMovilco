@@ -23,10 +23,10 @@ Partial Class InventarioGeneral
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
@@ -69,7 +69,6 @@ Partial Class InventarioGeneral
         Me.TextBoxCantid2 = New System.Windows.Forms.TextBox()
         Me.Label53 = New System.Windows.Forms.Label()
         Me.LabelV = New System.Windows.Forms.Label()
-        Me.Label52 = New System.Windows.Forms.Label()
         Me.TextBoxNumFac2 = New System.Windows.Forms.TextBox()
         Me.Label51 = New System.Windows.Forms.Label()
         Me.Label56 = New System.Windows.Forms.Label()
@@ -237,24 +236,24 @@ Partial Class InventarioGeneral
         Me.DataGridViewIG.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader
         Me.DataGridViewIG.BackgroundColor = System.Drawing.Color.White
         Me.DataGridViewIG.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Arial", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewIG.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle13.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Arial", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewIG.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle13
         Me.DataGridViewIG.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewIG.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.articulo, Me.marcaArticulo, Me.serialM, Me.serialArticulo, Me.estadoArticulo, Me.ValorPromedio, Me.Observaciones, Me.ComboBoxIG, Me.btnEliminar})
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ActiveCaption
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewIG.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.ActiveCaption
+        DataGridViewCellStyle15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewIG.DefaultCellStyle = DataGridViewCellStyle15
         Me.DataGridViewIG.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
         Me.DataGridViewIG.GridColor = System.Drawing.Color.White
         Me.DataGridViewIG.Location = New System.Drawing.Point(5, 288)
@@ -298,9 +297,9 @@ Partial Class InventarioGeneral
         '
         'ValorPromedio
         '
-        DataGridViewCellStyle2.Format = "N2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.ValorPromedio.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle14.Format = "N2"
+        DataGridViewCellStyle14.NullValue = Nothing
+        Me.ValorPromedio.DefaultCellStyle = DataGridViewCellStyle14
         Me.ValorPromedio.HeaderText = "VALOR PROMEDIO"
         Me.ValorPromedio.Name = "ValorPromedio"
         Me.ValorPromedio.Width = 93
@@ -401,17 +400,16 @@ Partial Class InventarioGeneral
         Me.GroupBoxDetalles.BackColor = System.Drawing.Color.Transparent
         Me.GroupBoxDetalles.Controls.Add(Me.dataGridViewCencepto2)
         Me.GroupBoxDetalles.Controls.Add(Me.labelValor2)
-        Me.GroupBoxDetalles.Controls.Add(Me.TextBoxVend2)
-        Me.GroupBoxDetalles.Controls.Add(Me.Label55)
         Me.GroupBoxDetalles.Controls.Add(Me.DateTimePickerFC2)
         Me.GroupBoxDetalles.Controls.Add(Me.Label54)
+        Me.GroupBoxDetalles.Controls.Add(Me.TextBoxVend2)
         Me.GroupBoxDetalles.Controls.Add(Me.TextBoxCantid2)
+        Me.GroupBoxDetalles.Controls.Add(Me.Label55)
         Me.GroupBoxDetalles.Controls.Add(Me.Label53)
-        Me.GroupBoxDetalles.Controls.Add(Me.LabelV)
-        Me.GroupBoxDetalles.Controls.Add(Me.Label52)
+        Me.GroupBoxDetalles.Controls.Add(Me.Label56)
         Me.GroupBoxDetalles.Controls.Add(Me.TextBoxNumFac2)
         Me.GroupBoxDetalles.Controls.Add(Me.Label51)
-        Me.GroupBoxDetalles.Controls.Add(Me.Label56)
+        Me.GroupBoxDetalles.Controls.Add(Me.LabelV)
         Me.GroupBoxDetalles.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBoxDetalles.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.GroupBoxDetalles.Location = New System.Drawing.Point(405, 51)
@@ -428,7 +426,7 @@ Partial Class InventarioGeneral
         Me.dataGridViewCencepto2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dataGridViewCencepto2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2})
         Me.dataGridViewCencepto2.GridColor = System.Drawing.SystemColors.ActiveCaption
-        Me.dataGridViewCencepto2.Location = New System.Drawing.Point(9, 74)
+        Me.dataGridViewCencepto2.Location = New System.Drawing.Point(11, 103)
         Me.dataGridViewCencepto2.Name = "dataGridViewCencepto2"
         Me.dataGridViewCencepto2.RowHeadersVisible = False
         Me.dataGridViewCencepto2.Size = New System.Drawing.Size(364, 114)
@@ -442,9 +440,9 @@ Partial Class InventarioGeneral
         '
         'Column2
         '
-        DataGridViewCellStyle4.Format = "N2"
-        DataGridViewCellStyle4.NullValue = "0"
-        Me.Column2.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle16.Format = "N2"
+        DataGridViewCellStyle16.NullValue = "0"
+        Me.Column2.DefaultCellStyle = DataGridViewCellStyle16
         Me.Column2.HeaderText = "VALOR UNITARIO"
         Me.Column2.Name = "Column2"
         Me.Column2.Width = 125
@@ -453,19 +451,19 @@ Partial Class InventarioGeneral
         '
         Me.labelValor2.AutoEllipsis = True
         Me.labelValor2.AutoSize = True
-        Me.labelValor2.Font = New System.Drawing.Font("LCD", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labelValor2.Font = New System.Drawing.Font("Modern No. 20", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.labelValor2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.labelValor2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.labelValor2.Location = New System.Drawing.Point(240, 209)
+        Me.labelValor2.Location = New System.Drawing.Point(205, 73)
         Me.labelValor2.Name = "labelValor2"
-        Me.labelValor2.Size = New System.Drawing.Size(15, 14)
+        Me.labelValor2.Size = New System.Drawing.Size(19, 21)
         Me.labelValor2.TabIndex = 14
         Me.labelValor2.Text = "0"
         Me.labelValor2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'TextBoxVend2
         '
-        Me.TextBoxVend2.Location = New System.Drawing.Point(10, 206)
+        Me.TextBoxVend2.Location = New System.Drawing.Point(9, 74)
         Me.TextBoxVend2.Name = "TextBoxVend2"
         Me.TextBoxVend2.Size = New System.Drawing.Size(172, 20)
         Me.TextBoxVend2.TabIndex = 11
@@ -473,7 +471,7 @@ Partial Class InventarioGeneral
         'Label55
         '
         Me.Label55.AutoSize = True
-        Me.Label55.Location = New System.Drawing.Point(7, 191)
+        Me.Label55.Location = New System.Drawing.Point(6, 59)
         Me.Label55.Name = "Label55"
         Me.Label55.Size = New System.Drawing.Size(106, 13)
         Me.Label55.TabIndex = 11
@@ -514,20 +512,11 @@ Partial Class InventarioGeneral
         'LabelV
         '
         Me.LabelV.AutoSize = True
-        Me.LabelV.Location = New System.Drawing.Point(228, 191)
+        Me.LabelV.Location = New System.Drawing.Point(201, 59)
         Me.LabelV.Name = "LabelV"
         Me.LabelV.Size = New System.Drawing.Size(54, 13)
         Me.LabelV.TabIndex = 4
         Me.LabelV.Text = "Valor total"
-        '
-        'Label52
-        '
-        Me.Label52.AutoSize = True
-        Me.Label52.Location = New System.Drawing.Point(6, 58)
-        Me.Label52.Name = "Label52"
-        Me.Label52.Size = New System.Drawing.Size(53, 13)
-        Me.Label52.TabIndex = 2
-        Me.Label52.Text = "Concepto"
         '
         'TextBoxNumFac2
         '
@@ -549,11 +538,11 @@ Partial Class InventarioGeneral
         '
         Me.Label56.BackColor = System.Drawing.Color.Transparent
         Me.Label56.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Label56.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label56.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label56.ForeColor = System.Drawing.Color.Red
-        Me.Label56.Location = New System.Drawing.Point(228, 208)
+        Me.Label56.Location = New System.Drawing.Point(192, 75)
         Me.Label56.Name = "Label56"
-        Me.Label56.Size = New System.Drawing.Size(10, 18)
+        Me.Label56.Size = New System.Drawing.Size(13, 22)
         Me.Label56.TabIndex = 13
         Me.Label56.Text = "$"
         '
@@ -626,7 +615,6 @@ Partial Class InventarioGeneral
     Friend WithEvents TextBoxCantid2 As TextBox
     Friend WithEvents Label53 As Label
     Friend WithEvents LabelV As Label
-    Friend WithEvents Label52 As Label
     Friend WithEvents TextBoxNumFac2 As TextBox
     Friend WithEvents Label51 As Label
     Friend WithEvents Label56 As Label

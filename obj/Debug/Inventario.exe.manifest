@@ -15,16 +15,27 @@
       </applicationRequestMinimum>
       <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
         <!--
+
           Opciones del manifiesto de UAC
           Si desea cambiar el nivel de Control de cuentas de usuario de Windows, reemplace el
           nodo requestedExecutionLevel por uno de los siguientes.
+
+          Opciones del manifiesto de Control de cuentas de usuario
+          Si quiere cambiar el nivel de Control de cuentas de usuario de Windows, reemplace el
+          nodo requestedExecutionLevel por alguno de los siguientes.
+
 
         <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
         <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
         <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
 
+
          Si desea usar Virtualización de archivos y Registro para compatibilidad con
          versiones anteriores, elimine el nodo requestedExecutionLevel.
+
+         Si desea usar la virtualización de archivos y del Registro para la
+         compatibilidad con versiones anteriores, elimine el nodo requestedExecutionLevel.
+
     -->
         <requestedExecutionLevel level="asInvoker" uiAccess="false" />
       </requestedPrivileges>
@@ -62,7 +73,11 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+
         <dsig:DigestValue>AlsXrSKr5A96EwKVwTeLQXitZTAQ57zE7UISOmu3sHA=</dsig:DigestValue>
+
+        <dsig:DigestValue>igy9oh0X2AxJR4gIx8rBSR4lQkl7jv6C++C0JgFBXzs=</dsig:DigestValue>
+
       </hash>
     </dependentAssembly>
   </dependency>
@@ -134,7 +149,11 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+
         <dsig:DigestValue>2YQotlSg9Cgh41WgLn6X99Z4lZrckOGY/HFfBr7FC70=</dsig:DigestValue>
+
+        <dsig:DigestValue>hy7wPCj756Xb0SoaAGLrTbNAADR9shybriozuItLKh4=</dsig:DigestValue>
+
       </hash>
     </dependentAssembly>
   </dependency>
@@ -146,19 +165,31 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+
         <dsig:DigestValue>2NzvQ2/wGdvin/xqiZPqK0kelpOlWKY1qa3V5jg1s9M=</dsig:DigestValue>
+
+        <dsig:DigestValue>WE7bxkQHtALDaYc+GKwxFWTyCPigWOKDA0G/GnPQ5so=</dsig:DigestValue>
+
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
+
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Inventario.exe" size="2152960">
+
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Inventario.exe" size="2151424">
+
       <assemblyIdentity name="Inventario" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+
         <dsig:DigestValue>ypcM7NwurbtkMT6hAjBv3+HR51N73nLsbTAuZq87TL4=</dsig:DigestValue>
+
+        <dsig:DigestValue>pufFa7yyMGNoUcGT4/usQNwk27ylPYsRuZljoyCR4SM=</dsig:DigestValue>
+
       </hash>
     </dependentAssembly>
   </dependency>

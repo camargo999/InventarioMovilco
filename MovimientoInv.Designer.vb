@@ -365,7 +365,11 @@ Partial Class MovimientoInv
         Me.LabelTituloEstado.ForeColor = System.Drawing.Color.Red
         Me.LabelTituloEstado.Location = New System.Drawing.Point(255, 565)
         Me.LabelTituloEstado.Name = "LabelTituloEstado"
+
         Me.LabelTituloEstado.Size = New System.Drawing.Size(300, 18)
+
+        Me.LabelTituloEstado.Size = New System.Drawing.Size(291, 18)
+
         Me.LabelTituloEstado.TabIndex = 14
         Me.LabelTituloEstado.Text = "ACTUALIZAR ESTADO DEL ARTICULO:"
         '
