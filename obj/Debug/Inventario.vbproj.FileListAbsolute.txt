@@ -1,4 +1,4 @@
-﻿C:\Users\CVR\Documents\GitHub\InventarioMovilco\obj\Debug\Inventario.vbprojAssemblyReference.cache
+C:\Users\CVR\Documents\GitHub\InventarioMovilco\obj\Debug\Inventario.vbprojAssemblyReference.cache
 C:\Users\CVR\Documents\GitHub\InventarioMovilco\obj\Debug\Interop.CTVLib.dll
 C:\Users\CVR\Documents\GitHub\InventarioMovilco\obj\Debug\Interop.PrintUIObjLib.dll
 C:\Users\CVR\Documents\GitHub\InventarioMovilco\obj\Debug\AxInterop.CTVLib.dll
@@ -16,7 +16,6 @@ C:\Users\CVR\Documents\GitHub\InventarioMovilco\obj\Debug\Inventario.RecuperarCo
 C:\Users\CVR\Documents\GitHub\InventarioMovilco\obj\Debug\Inventario.Reportes.resources
 C:\Users\CVR\Documents\GitHub\InventarioMovilco\obj\Debug\Inventario.Usuarios.resources
 C:\Users\CVR\Documents\GitHub\InventarioMovilco\obj\Debug\Inventario.vbproj.GenerateResource.cache
-
 C:\Users\CVR\Documents\GitHub\InventarioMovilco\bin\Debug\Inventario.exe.config
 C:\Users\CVR\Documents\GitHub\InventarioMovilco\bin\Debug\Inventario.exe.manifest
 C:\Users\CVR\Documents\GitHub\InventarioMovilco\bin\Debug\Inventario.application
@@ -52,7 +51,6 @@ C:\Users\CVR\Documents\GitHub\InventarioMovilco\obj\Debug\Inventario.vbproj.Copy
 C:\Users\CVR\Documents\GitHub\InventarioMovilco\obj\Debug\Inventario.exe
 C:\Users\CVR\Documents\GitHub\InventarioMovilco\obj\Debug\Inventario.xml
 C:\Users\CVR\Documents\GitHub\InventarioMovilco\obj\Debug\Inventario.pdb
-
 C:\Users\Movilco\Documents\GitHub\InventarioMovilco\obj\Debug\Inventario.vbprojAssemblyReference.cache
 C:\Users\Movilco\Documents\GitHub\InventarioMovilco\obj\Debug\Interop.CTVLib.dll
 C:\Users\Movilco\Documents\GitHub\InventarioMovilco\obj\Debug\Interop.PrintUIObjLib.dll

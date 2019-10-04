@@ -29,10 +29,9 @@ Partial Class Reportes
         Me.lblTituloReportes = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PrintForm1 = New Microsoft.VisualBasic.PowerPacks.Printing.PrintForm(Me.components)
-        Me.comboRemitenteR = New System.Windows.Forms.ComboBox()
+        Me.comboCodigoArticulo = New System.Windows.Forms.ComboBox()
         Me.btnGuardarReporte = New System.Windows.Forms.Button()
         Me.btnImprimirRep = New System.Windows.Forms.Button()
-        Me.ListBoxArticulos = New System.Windows.Forms.ListBox()
         Me.comboDestinatarioR = New System.Windows.Forms.ComboBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.tabMovimientosR = New System.Windows.Forms.TabPage()
@@ -61,8 +60,9 @@ Partial Class Reportes
         Me.btnEliminarRe = New System.Windows.Forms.Button()
         Me.DataGridMov = New System.Windows.Forms.DataGridView()
         Me.tabRemisiones = New System.Windows.Forms.TabPage()
-        Me.TextBoxRemitente = New System.Windows.Forms.TextBox()
-        Me.TextBoxBusqueda = New System.Windows.Forms.TextBox()
+        Me.LabelArticulo = New System.Windows.Forms.Label()
+        Me.ComboBoxRemitentes = New System.Windows.Forms.ComboBox()
+        Me.LabelRemitente = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.RadioActivos = New System.Windows.Forms.RadioButton()
         Me.RadioSistemas = New System.Windows.Forms.RadioButton()
@@ -121,11 +121,9 @@ Partial Class Reportes
         Me.LineShape3 = New Microsoft.VisualBasic.PowerPacks.LineShape()
         Me.lblIdInventario1 = New System.Windows.Forms.Label()
         Me.lblIdInventario0 = New System.Windows.Forms.Label()
-        Me.LabelArticulo = New System.Windows.Forms.Label()
         Me.lblRemit = New System.Windows.Forms.Label()
         Me.lblDestin = New System.Windows.Forms.Label()
         Me.LabelElemento = New System.Windows.Forms.Label()
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.TabPageMostrarR = New System.Windows.Forms.TabPage()
         Me.TextBoxCantidadR = New System.Windows.Forms.TextBox()
         Me.Label27 = New System.Windows.Forms.Label()
@@ -156,7 +154,6 @@ Partial Class Reportes
         Me.GroupBox1.SuspendLayout()
         Me.Panel5.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPageMostrarR.SuspendLayout()
         CType(Me.PictureBoxMostrarI, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -184,19 +181,18 @@ Partial Class Reportes
         Me.PrintForm1.PrinterSettings = CType(resources.GetObject("PrintForm1.PrinterSettings"), System.Drawing.Printing.PrinterSettings)
         Me.PrintForm1.PrintFileName = Nothing
         '
-        'comboRemitenteR
+        'comboCodigoArticulo
         '
-        Me.comboRemitenteR.BackColor = System.Drawing.Color.LightSlateGray
-        Me.comboRemitenteR.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.comboRemitenteR.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.comboRemitenteR.ForeColor = System.Drawing.Color.White
-        Me.comboRemitenteR.FormattingEnabled = True
-        Me.comboRemitenteR.Location = New System.Drawing.Point(25, 74)
-        Me.comboRemitenteR.Name = "comboRemitenteR"
-        Me.comboRemitenteR.Size = New System.Drawing.Size(184, 26)
-        Me.comboRemitenteR.TabIndex = 42
-        Me.comboRemitenteR.Text = "Seleccionar"
-        Me.ToolTipRemisiones.SetToolTip(Me.comboRemitenteR, "Seleccione un item")
+        Me.comboCodigoArticulo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.comboCodigoArticulo.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.comboCodigoArticulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.comboCodigoArticulo.ForeColor = System.Drawing.Color.Black
+        Me.comboCodigoArticulo.FormattingEnabled = True
+        Me.comboCodigoArticulo.Location = New System.Drawing.Point(366, 35)
+        Me.comboCodigoArticulo.Name = "comboCodigoArticulo"
+        Me.comboCodigoArticulo.Size = New System.Drawing.Size(184, 23)
+        Me.comboCodigoArticulo.TabIndex = 42
+        Me.ToolTipRemisiones.SetToolTip(Me.comboCodigoArticulo, "Seleccione un item")
         '
         'btnGuardarReporte
         '
@@ -226,32 +222,16 @@ Partial Class Reportes
         Me.ToolTipRemisiones.SetToolTip(Me.btnImprimirRep, "Imprimir reporte")
         Me.btnImprimirRep.UseVisualStyleBackColor = False
         '
-        'ListBoxArticulos
-        '
-        Me.ListBoxArticulos.BackColor = System.Drawing.Color.LightSlateGray
-        Me.ListBoxArticulos.Enabled = False
-        Me.ListBoxArticulos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ListBoxArticulos.ForeColor = System.Drawing.Color.White
-        Me.ListBoxArticulos.FormattingEnabled = True
-        Me.ListBoxArticulos.ItemHeight = 15
-        Me.ListBoxArticulos.Location = New System.Drawing.Point(11, 56)
-        Me.ListBoxArticulos.Name = "ListBoxArticulos"
-        Me.ListBoxArticulos.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple
-        Me.ListBoxArticulos.Size = New System.Drawing.Size(204, 214)
-        Me.ListBoxArticulos.TabIndex = 49
-        Me.ToolTipRemisiones.SetToolTip(Me.ListBoxArticulos, "Seleccione seriales")
-        Me.ListBoxArticulos.Visible = False
-        '
         'comboDestinatarioR
         '
         Me.comboDestinatarioR.BackColor = System.Drawing.Color.LightSlateGray
         Me.comboDestinatarioR.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.comboDestinatarioR.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.comboDestinatarioR.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.comboDestinatarioR.ForeColor = System.Drawing.Color.White
         Me.comboDestinatarioR.FormattingEnabled = True
-        Me.comboDestinatarioR.Location = New System.Drawing.Point(393, 33)
+        Me.comboDestinatarioR.Location = New System.Drawing.Point(13, 33)
         Me.comboDestinatarioR.Name = "comboDestinatarioR"
-        Me.comboDestinatarioR.Size = New System.Drawing.Size(185, 24)
+        Me.comboDestinatarioR.Size = New System.Drawing.Size(185, 21)
         Me.comboDestinatarioR.TabIndex = 41
         Me.comboDestinatarioR.Text = "Seleccionar"
         Me.ToolTipRemisiones.SetToolTip(Me.comboDestinatarioR, "Seleccione un item")
@@ -613,23 +593,22 @@ Partial Class Reportes
         'tabRemisiones
         '
         Me.tabRemisiones.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.tabRemisiones.Controls.Add(Me.TextBoxRemitente)
-        Me.tabRemisiones.Controls.Add(Me.TextBoxBusqueda)
+        Me.tabRemisiones.Controls.Add(Me.comboCodigoArticulo)
+        Me.tabRemisiones.Controls.Add(Me.LabelArticulo)
+        Me.tabRemisiones.Controls.Add(Me.ComboBoxRemitentes)
+        Me.tabRemisiones.Controls.Add(Me.LabelRemitente)
         Me.tabRemisiones.Controls.Add(Me.Label5)
-        Me.tabRemisiones.Controls.Add(Me.ListBoxArticulos)
         Me.tabRemisiones.Controls.Add(Me.RadioActivos)
         Me.tabRemisiones.Controls.Add(Me.RadioSistemas)
         Me.tabRemisiones.Controls.Add(Me.PanelVista)
         Me.tabRemisiones.Controls.Add(Me.lblIdInventario1)
         Me.tabRemisiones.Controls.Add(Me.lblIdInventario0)
-        Me.tabRemisiones.Controls.Add(Me.LabelArticulo)
         Me.tabRemisiones.Controls.Add(Me.lblRemit)
         Me.tabRemisiones.Controls.Add(Me.lblDestin)
         Me.tabRemisiones.Controls.Add(Me.comboDestinatarioR)
         Me.tabRemisiones.Controls.Add(Me.btnGuardarReporte)
         Me.tabRemisiones.Controls.Add(Me.btnImprimirRep)
         Me.tabRemisiones.Controls.Add(Me.LabelElemento)
-        Me.tabRemisiones.Controls.Add(Me.PictureBox3)
         Me.tabRemisiones.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tabRemisiones.Location = New System.Drawing.Point(4, 22)
         Me.tabRemisiones.Name = "tabRemisiones"
@@ -638,29 +617,45 @@ Partial Class Reportes
         Me.tabRemisiones.TabIndex = 0
         Me.tabRemisiones.Text = "REMISIONES"
         '
-        'TextBoxRemitente
+        'LabelArticulo
         '
-        Me.TextBoxRemitente.BackColor = System.Drawing.Color.LightSlateGray
-        Me.TextBoxRemitente.Location = New System.Drawing.Point(588, 35)
-        Me.TextBoxRemitente.Name = "TextBoxRemitente"
-        Me.TextBoxRemitente.Size = New System.Drawing.Size(185, 20)
-        Me.TextBoxRemitente.TabIndex = 59
+        Me.LabelArticulo.AutoSize = True
+        Me.LabelArticulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelArticulo.ForeColor = System.Drawing.Color.Red
+        Me.LabelArticulo.Location = New System.Drawing.Point(364, 17)
+        Me.LabelArticulo.Name = "LabelArticulo"
+        Me.LabelArticulo.Size = New System.Drawing.Size(154, 15)
+        Me.LabelArticulo.TabIndex = 47
+        Me.LabelArticulo.Text = "Serial movilco/articulo:"
         '
-        'TextBoxBusqueda
+        'ComboBoxRemitentes
         '
-        Me.TextBoxBusqueda.BackColor = System.Drawing.Color.LightSlateGray
-        Me.TextBoxBusqueda.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxBusqueda.Location = New System.Drawing.Point(11, 34)
-        Me.TextBoxBusqueda.Name = "TextBoxBusqueda"
-        Me.TextBoxBusqueda.Size = New System.Drawing.Size(185, 22)
-        Me.TextBoxBusqueda.TabIndex = 58
+        Me.ComboBoxRemitentes.BackColor = System.Drawing.Color.LightSlateGray
+        Me.ComboBoxRemitentes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ComboBoxRemitentes.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ComboBoxRemitentes.ForeColor = System.Drawing.Color.White
+        Me.ComboBoxRemitentes.FormattingEnabled = True
+        Me.ComboBoxRemitentes.Location = New System.Drawing.Point(584, 33)
+        Me.ComboBoxRemitentes.Name = "ComboBoxRemitentes"
+        Me.ComboBoxRemitentes.Size = New System.Drawing.Size(185, 21)
+        Me.ComboBoxRemitentes.TabIndex = 59
+        Me.ComboBoxRemitentes.Text = "Seleccionar"
+        Me.ToolTipRemisiones.SetToolTip(Me.ComboBoxRemitentes, "Seleccione un item")
+        '
+        'LabelRemitente
+        '
+        Me.LabelRemitente.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelRemitente.Location = New System.Drawing.Point(585, 36)
+        Me.LabelRemitente.Name = "LabelRemitente"
+        Me.LabelRemitente.Size = New System.Drawing.Size(187, 21)
+        Me.LabelRemitente.TabIndex = 58
         '
         'Label5
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Red
-        Me.Label5.Location = New System.Drawing.Point(247, 18)
+        Me.Label5.Location = New System.Drawing.Point(219, 15)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(122, 15)
         Me.Label5.TabIndex = 57
@@ -669,7 +664,7 @@ Partial Class Reportes
         'RadioActivos
         '
         Me.RadioActivos.AutoSize = True
-        Me.RadioActivos.Location = New System.Drawing.Point(249, 45)
+        Me.RadioActivos.Location = New System.Drawing.Point(223, 45)
         Me.RadioActivos.Name = "RadioActivos"
         Me.RadioActivos.Size = New System.Drawing.Size(63, 17)
         Me.RadioActivos.TabIndex = 56
@@ -681,7 +676,7 @@ Partial Class Reportes
         '
         Me.RadioSistemas.AutoSize = True
         Me.RadioSistemas.Checked = True
-        Me.RadioSistemas.Location = New System.Drawing.Point(249, 30)
+        Me.RadioSistemas.Location = New System.Drawing.Point(223, 30)
         Me.RadioSistemas.Name = "RadioSistemas"
         Me.RadioSistemas.Size = New System.Drawing.Size(70, 17)
         Me.RadioSistemas.TabIndex = 55
@@ -961,7 +956,6 @@ Partial Class Reportes
         'Panel3
         '
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel3.Controls.Add(Me.comboRemitenteR)
         Me.Panel3.Controls.Add(Me.TextBoxObserv)
         Me.Panel3.Controls.Add(Me.lblObservacionesR)
         Me.Panel3.Controls.Add(Me.lblCargoRemit)
@@ -1224,23 +1218,12 @@ Partial Class Reportes
         Me.lblIdInventario0.Text = "IdInventarioH"
         Me.lblIdInventario0.Visible = False
         '
-        'LabelArticulo
-        '
-        Me.LabelArticulo.AutoSize = True
-        Me.LabelArticulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelArticulo.ForeColor = System.Drawing.Color.Red
-        Me.LabelArticulo.Location = New System.Drawing.Point(8, 18)
-        Me.LabelArticulo.Name = "LabelArticulo"
-        Me.LabelArticulo.Size = New System.Drawing.Size(154, 15)
-        Me.LabelArticulo.TabIndex = 47
-        Me.LabelArticulo.Text = "Serial movilco/articulo:"
-        '
         'lblRemit
         '
         Me.lblRemit.AutoSize = True
         Me.lblRemit.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblRemit.ForeColor = System.Drawing.Color.Red
-        Me.lblRemit.Location = New System.Drawing.Point(584, 18)
+        Me.lblRemit.Location = New System.Drawing.Point(582, 15)
         Me.lblRemit.Name = "lblRemit"
         Me.lblRemit.Size = New System.Drawing.Size(125, 15)
         Me.lblRemit.TabIndex = 44
@@ -1251,7 +1234,7 @@ Partial Class Reportes
         Me.lblDestin.AutoSize = True
         Me.lblDestin.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDestin.ForeColor = System.Drawing.Color.Red
-        Me.lblDestin.Location = New System.Drawing.Point(390, 18)
+        Me.lblDestin.Location = New System.Drawing.Point(10, 15)
         Me.lblDestin.Name = "lblDestin"
         Me.lblDestin.Size = New System.Drawing.Size(133, 15)
         Me.lblDestin.TabIndex = 43
@@ -1266,17 +1249,6 @@ Partial Class Reportes
         Me.LabelElemento.Size = New System.Drawing.Size(0, 33)
         Me.LabelElemento.TabIndex = 45
         Me.LabelElemento.Visible = False
-        '
-        'PictureBox3
-        '
-        Me.PictureBox3.Enabled = False
-        Me.PictureBox3.Image = Global.Inventario.My.Resources.Resources.desple
-        Me.PictureBox3.Location = New System.Drawing.Point(193, 35)
-        Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(22, 21)
-        Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox3.TabIndex = 50
-        Me.PictureBox3.TabStop = False
         '
         'TabPageMostrarR
         '
@@ -1486,7 +1458,6 @@ Partial Class Reportes
         Me.Panel5.ResumeLayout(False)
         Me.Panel5.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPageMostrarR.ResumeLayout(False)
         Me.TabPageMostrarR.PerformLayout()
         CType(Me.PictureBoxMostrarI, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1507,7 +1478,7 @@ Partial Class Reportes
     Friend WithEvents DataGridMov As DataGridView
     Friend WithEvents ToolTipRemisiones As ToolTip
 
-    Friend WithEvents comboRemitenteR As ComboBox
+    Friend WithEvents comboCodigoArticulo As ComboBox
     Friend WithEvents comboDestinatarioR As ComboBox
 
     Friend WithEvents lblRemit As Label
@@ -1547,8 +1518,6 @@ Partial Class Reportes
     Friend WithEvents TextBoxCantidadR As TextBox
     Friend WithEvents lblIdInventario1 As Label
     Friend WithEvents lblIdInventario0 As Label
-    Friend WithEvents ListBoxArticulos As ListBox
-    Friend WithEvents PictureBox3 As PictureBox
     Friend WithEvents Timer2 As Timer
     Friend WithEvents PanelVista As Panel
     Friend WithEvents PictureBoxMostrarI As PictureBox
@@ -1612,6 +1581,6 @@ Partial Class Reportes
     Friend WithEvents RadioSistemas As RadioButton
     Friend WithEvents Label5 As Label
     Friend WithEvents ButtonExp As Button
-    Friend WithEvents TextBoxBusqueda As TextBox
-    Friend WithEvents TextBoxRemitente As TextBox
+    Friend WithEvents LabelRemitente As Label
+    Friend WithEvents ComboBoxRemitentes As ComboBox
 End Class

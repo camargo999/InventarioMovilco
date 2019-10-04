@@ -61,15 +61,13 @@ Public Class Reportes
 
     End Sub
     Private bmp As Bitmap
-    Private Sub Button3_Click_1(sender As Object, e As EventArgs) Handles btnImprimirRep.Click
-
-
+    Private Sub btnImprimirRep_Click_1(sender As Object, e As EventArgs) Handles btnImprimirRep.Click
 
         '  Remision.Show()
         'este codigo pertenece al boton imprimir
         Try
 
-            If ListBoxArticulos.Text = "Seleccionar" Or comboDestinatarioR.Text = "Seleccionar" Or comboRemitenteR.Text = "Seleccionar" Then
+            If comboCodigoArticulo.Text = "Seleccionar" Or comboDestinatarioR.Text = "Seleccionar" Or comboCodigoArticulo.Text = "Seleccionar" Then
 
                 lblOcultoId.Visible = False
                 MsgBox("NO HAY DATOS PARA ALMACENAR", MsgBoxStyle.Information, "INFORMACIÓN")
@@ -143,14 +141,7 @@ Public Class Reportes
 
                 Dim i, a As Integer
                 a = 0
-                With ListBoxArticulos
-                    For i = .SelectedItems.Count - 1 To 0 Step -1
 
-                        concatenarserial = concatenarserial + " " + .GetItemText(.SelectedItems.Item(a)).ToString
-                        ' MsgBox(concatenarserial)
-                        a = a + 1
-                    Next
-                End With
 
                 Dim j, r As Integer
                 Dim concatenararticulo As String = ""
@@ -160,27 +151,26 @@ Public Class Reportes
 
                 r = 0
                 Dim flag As String = 0
-                With ListBoxArticulos
-                    For j = .SelectedItems.Count - 1 To 0 Step -1
-                        Dim consultaarticuloH As New MySqlCommand("select tipoArticuloH from inventariohardware where codigoArticuloH='" & .GetItemText(.SelectedItems.Item(r)).ToString() & "' or serialArticuloSoft='" & .GetItemText(.SelectedItems.Item(r)).ToString() & "'", llamadoarticulo.conexion)
-                        llamadoarticulo.AbrirConexion()
-                        Dim leer12 As MySqlDataReader = consultaarticuloH.ExecuteReader()
-                        If leer12.Read Then
-                            concatenararticuloH = concatenararticuloH + " " + leer12(0)
-                        End If
-                        llamadoarticulo.CerrarConexion()
 
-                        Dim consultaarticuloA As New MySqlCommand("select articuloA from inventarioactivos where serialMovilco='" & .GetItemText(.SelectedItems.Item(r)).ToString() & "' or serialArticuloA='" & .GetItemText(.SelectedItems.Item(r)).ToString() & "'", llamadoarticulo.conexion)
-                        llamadoarticulo.AbrirConexion()
-                        Dim leer23 As MySqlDataReader = consultaarticuloA.ExecuteReader()
-                        If leer23.Read Then
-                            concatenararticuloA = concatenararticuloA + " " + leer23(0)
-                            MsgBox(concatenararticuloA)
-                        End If
-                        llamadoarticulo.CerrarConexion()
-                        r = r + 1
-                    Next
-                End With
+
+                Dim consultaarticuloH As New MySqlCommand("select tipoArticuloH from inventariohardware where codigoArticuloH='" & comboCodigoArticulo.SelectedItem & "' or serialArticuloSoft='" & comboCodigoArticulo.SelectedItem & "'", llamadoarticulo.conexion)
+                llamadoarticulo.AbrirConexion()
+                Dim leer12 As MySqlDataReader = consultaarticuloH.ExecuteReader()
+                If leer12.Read Then
+                    concatenararticuloH = concatenararticuloH + " " + leer12(0)
+                End If
+                llamadoarticulo.CerrarConexion()
+
+                Dim consultaarticuloA As New MySqlCommand("select articuloA from inventarioactivos where serialMovilco='" & comboCodigoArticulo.SelectedItem & "' or serialArticuloA='" & comboCodigoArticulo.SelectedItem & "'", llamadoarticulo.conexion)
+                llamadoarticulo.AbrirConexion()
+                Dim leer23 As MySqlDataReader = consultaarticuloA.ExecuteReader()
+                If leer23.Read Then
+                    concatenararticuloA = concatenararticuloA + " " + leer23(0)
+                    MsgBox(concatenararticuloA)
+                End If
+                llamadoarticulo.CerrarConexion()
+
+
 
                 If concatenararticuloH <> "" Then
                     concatenararticulo = concatenararticuloH
@@ -213,9 +203,9 @@ Public Class Reportes
                 fs.Dispose()
                 imag.Dispose()
 
-                ListBoxArticulos.Text = "Seleccionar"
+
                 comboDestinatarioR.Text = "Seleccionar"
-                comboRemitenteR.Text = "Seleccionar"
+                comboCodigoArticulo.Text = "Seleccionar"
 
                 lblParaDestinatario.Text = ""
                 lblEncargadoDest.Text = ""
@@ -248,13 +238,11 @@ Public Class Reportes
         lblDestin.Visible = True
         comboDestinatarioR.Visible = True
         lblRemit.Visible = True
-        comboRemitenteR.Visible = True
+        comboCodigoArticulo.Visible = True
         LabelArticulo.Visible = True
-        ListBoxArticulos.Visible = True
+
         lblOcultoId.Visible = False
-        PictureBox3.Visible = True
-        '  ButtonAbrirList.Visible = True
-        ListBoxArticulos.Visible = False
+
 
     End Sub
     Sub traerCantidadRemision()
@@ -290,8 +278,9 @@ Public Class Reportes
         If leer.HasRows Then
             While leer.Read
 
+                ComboBoxRemitentes.Items.Add(leer("encargadoD"))
                 comboDestinatarioR.Items.Add(leer("encargadoD"))
-                TextBoxRemitente.Text = InventarioSH.Label3.Text
+                LabelRemitente.Text = InventarioSH.Label3.Text
 
             End While
         End If
@@ -308,7 +297,7 @@ Public Class Reportes
         Me.SetStyle(ControlStyles.UserPaint, True)
 
         TextBoxCantidadR.ReadOnly = True   'METODO PARA EVITAR QUE EL TEXTBOX SEA EDITABLE
-        TextBoxRemitente.ReadOnly = True
+
 
         LabelElemento.Visible = False
         Dim llamado1 As New connection
@@ -319,49 +308,46 @@ Public Class Reportes
 
         'Codigo utilizado para cargar el ListBoxArticulos con los seriales de la tabla hardware.
 
-        'Dim llamadoHardwares, llamadoHardwarea, llamadoActivosg, llamadoActivosa As New connection
-        'If InventarioSH.Label4.Text = "SISTEMAS" Then
+        Dim llamadoHardwares, llamadoHardwarea, llamadoActivosg, llamadoActivosa As New connection
+        If InventarioSH.Label4.Text = "SISTEMAS" Then
 
-        '    Dim consultaHardware As New MySqlCommand("SELECT codigoArticuloH, serialArticuloSoft FROM inventariohardware ", llamadoHardwares.conexion)
-        '    llamadoHardwares.AbrirConexion()
-        '    Dim leerHardware As MySqlDataReader = consultaHardware.ExecuteReader()
+            Dim consultaHardware As New MySqlCommand("SELECT codigoArticuloH, serialArticuloSoft FROM inventariohardware ", llamadoHardwares.conexion)
+            llamadoHardwares.AbrirConexion()
+            Dim leerHardware As MySqlDataReader = consultaHardware.ExecuteReader()
 
-        '    If leerHardware.HasRows Then
-        '        While leerHardware.Read
+            If leerHardware.HasRows Then
+                While leerHardware.Read
 
-        '            ListBoxArticulos.Items.Add(leerHardware("codigoArticuloH"))
-        '            ListBoxArticulos.Items.Add(leerHardware("serialArticuloSoft"))
+                    comboCodigoArticulo.Items.Add(leerHardware("codigoArticuloH"))
+                    comboCodigoArticulo.Items.Add(leerHardware("serialArticuloSoft"))
 
-        '        End While
-        '    End If
-        '    llamadoHardwares.CerrarConexion()
-        'ElseIf InventarioSH.Label4.Text = "GENERAL" Then
+                End While
+            End If
+            llamadoHardwares.CerrarConexion()
+        ElseIf InventarioSH.Label4.Text = "GENERAL" Then
 
-        '    Dim consultaActivos As New MySqlCommand("SELECT serialMovilco,serialArticuloA FROM inventarioactivos", llamadoActivosg.conexion)
-        '    llamadoActivosg.AbrirConexion()
-        '    Dim leerActivos As MySqlDataReader = consultaActivos.ExecuteReader()
+            Dim consultaActivos As New MySqlCommand("SELECT serialMovilco,serialArticuloA FROM inventarioactivos", llamadoActivosg.conexion)
+            llamadoActivosg.AbrirConexion()
+            Dim leerActivos As MySqlDataReader = consultaActivos.ExecuteReader()
 
-        '    If leerActivos.HasRows Then
-        '        While leerActivos.Read
+            If leerActivos.HasRows Then
+                While leerActivos.Read
 
-        '            ListBoxArticulos.Items.Add(leerActivos("serialMovilco"))
-        '            ListBoxArticulos.Items.Add(leerActivos("serialArticuloA"))
+                    comboCodigoArticulo.Items.Add(leerActivos("serialMovilco"))
+                    comboCodigoArticulo.Items.Add(leerActivos("serialArticuloA"))
 
-        '        End While
-        '    End If
-        '    llamadoActivosg.CerrarConexion()
-        'ElseIf InventarioSH.Label4.Text = "ADMINISTRADOR" Then
-        '    RadioSistemas.Visible = True
-        '    RadioActivos.Visible = True
-        '    RadioSistemas_CheckedChanged(sender, e)
+                End While
+            End If
+            llamadoActivosg.CerrarConexion()
+        ElseIf InventarioSH.Label4.Text = "ADMINISTRADOR" Then
+            RadioSistemas.Visible = True
+            RadioActivos.Visible = True
+            RadioSistemas_CheckedChanged(sender, e)
 
-        'Else
-        '    MsgBox("ERROR CON LA BASE DE DATOS", MsgBoxStyle.Critical, "ADVERTENCIA")
-        'End If
-
-        '        'CODIGO UTILIZADO PARA CARGAR EL COMBOBOXENCARGADO CON DATOS DE BD
-
-
+        Else
+            MsgBox("ERROR CON LA BASE DE DATOS", MsgBoxStyle.Critical, "ADVERTENCIA")
+        End If
+        comboCodigoArticulo.Text = comboCodigoArticulo.Items.Item(0)
 
     End Sub
     Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
@@ -446,32 +432,28 @@ Public Class Reportes
         llamado.CerrarConexion()
     End Sub
 
-    Private Sub ComboRemitenteR_SelectedValueChanged(sender As Object, e As EventArgs) Handles comboRemitenteR.SelectedValueChanged
-        Dim llamado As New connection
-        Dim consulta As New MySqlCommand("SELECT * FROM `destinatarios_remitentes` WHERE encargadoD='" & comboRemitenteR.SelectedItem & "' ", llamado.conexion)
-        llamado.AbrirConexion()
-        Dim leer As MySqlDataReader = consulta.ExecuteReader()
+    'Private Sub comboCodigoArticulo_SelectedValueChanged(sender As Object, e As EventArgs) Handles comboCodigoArticulo.SelectedValueChanged
+    '    Dim llamado As New connection
+    '    Dim consulta As New MySqlCommand("SELECT  FROM `inventariohardware`", llamado.conexion)
+    '    llamado.AbrirConexion()
+    '    Dim leer As MySqlDataReader = consulta.ExecuteReader()
 
-        If leer.Read Then
+    '    llamado.CerrarConexion()
 
-            lblDeRemit.Text = leer(2)
-            lblCargoRemit.Text = leer(6)
-            lblOficinaRemit.Text = leer(1)
-            lblDireccionRemit.Text = leer(4) + vbCrLf + leer(3)
-            lblCelularRemit.Text = leer(5)
+    '    Dim llamado1 As New connection
+    '    Dim consulta1 As New MySqlCommand("SELECT serialMovilco, serialArticuloA FROM `inventarioactivos`", llamado1.conexion)
+    '    llamado1.AbrirConexion()
+    '    Dim leer1 As MySqlDataReader = consulta1.ExecuteReader()
 
-
-        End If
-
-        llamado.CerrarConexion()
-    End Sub
+    '    llamado1.CerrarConexion()
+    'End Sub
 
     Private Sub ComboDestinatarioR_KeyPress(sender As Object, e As KeyPressEventArgs) Handles comboDestinatarioR.KeyPress
         e.Handled = True
     End Sub
 
-    Private Sub ComboRemitenteR_KeyPress(sender As Object, e As KeyPressEventArgs) Handles comboRemitenteR.KeyPress
-        e.Handled = True
+    Private Sub comboCodigoArticulo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles comboCodigoArticulo.KeyPress
+        ' e.Handled = True
     End Sub
 
     Private Sub DataGridMov_KeyPress(sender As Object, e As KeyPressEventArgs) Handles DataGridMov.KeyPress
@@ -519,7 +501,7 @@ Public Class Reportes
         End If
 
         comboDestinatarioR.Items.Clear()
-        comboRemitenteR.Items.Clear()
+        comboCodigoArticulo.Items.Clear()
         Dim llamadoRemision As New connection
         Dim consulta As New MySqlCommand("SELECT encargadoD FROM `destinatarios_remitentes` ", llamadoRemision.conexion)
         llamadoRemision.AbrirConexion()
@@ -528,7 +510,7 @@ Public Class Reportes
             While leer.Read
 
                 comboDestinatarioR.Items.Add(leer("encargadoD"))
-                comboRemitenteR.Items.Add(leer("encargadoD"))
+                comboCodigoArticulo.Items.Add(leer("encargadoD"))
 
             End While
         End If
@@ -567,7 +549,7 @@ Public Class Reportes
         End If
 
         comboDestinatarioR.Items.Clear()
-        comboRemitenteR.Items.Clear()
+        comboCodigoArticulo.Items.Clear()
         Dim llamadoRemision As New connection
         Dim consulta As New MySqlCommand("SELECT encargadoD FROM `destinatarios_remitentes` ", llamadoRemision.conexion)
         llamadoRemision.AbrirConexion()
@@ -576,7 +558,7 @@ Public Class Reportes
             While leer.Read
 
                 comboDestinatarioR.Items.Add(leer("encargadoD"))
-                comboRemitenteR.Items.Add(leer("encargadoD"))
+                comboCodigoArticulo.Items.Add(leer("encargadoD"))
 
             End While
         End If
@@ -614,7 +596,7 @@ Public Class Reportes
         End If
 
         comboDestinatarioR.Items.Clear()
-        comboRemitenteR.Items.Clear()
+        comboCodigoArticulo.Items.Clear()
         Dim llamadoRemision As New connection
         Dim consulta As New MySqlCommand("SELECT encargadoD FROM `destinatarios_remitentes` ", llamadoRemision.conexion)
         llamadoRemision.AbrirConexion()
@@ -623,7 +605,7 @@ Public Class Reportes
             While leer.Read
 
                 comboDestinatarioR.Items.Add(leer("encargadoD"))
-                comboRemitenteR.Items.Add(leer("encargadoD"))
+                comboCodigoArticulo.Items.Add(leer("encargadoD"))
 
             End While
         End If
@@ -675,8 +657,8 @@ Public Class Reportes
         Try
 
 
-            If lblParaDestinatario.Text <> "" And lblEncargadoDest.Text <> "" And lblOficinaDest.Text <> "" And lblDeRemit.Text <> "" And ListBoxArticulos.SelectedItems.Count <> 0 And
-                comboDestinatarioR.Text <> "Seleccionar" Or comboRemitenteR.Text <> "Seleccionar" And lblCargoRemit.Text <> "" And lblOficinaDest.Text <> "" And LabelElemento.Text <> "" Then
+            If lblParaDestinatario.Text <> "" And lblEncargadoDest.Text <> "" And lblOficinaDest.Text <> "" And lblDeRemit.Text <> "" And comboCodigoArticulo.SelectedItem <> "" And
+                comboDestinatarioR.Text <> "Seleccionar" Or comboCodigoArticulo.Text <> "Seleccionar" And lblCargoRemit.Text <> "" And lblOficinaDest.Text <> "" And LabelElemento.Text <> "" Then
 
                 'este metodo crea una carpeta en documentos
                 Dim CarpetaDestino As String = My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\imagenBD"
@@ -722,16 +704,6 @@ Public Class Reportes
 
                 Dim concatenarserial As String = ""
 
-                Dim i, a As Integer
-                a = 0
-                With ListBoxArticulos
-                    For i = .SelectedItems.Count - 1 To 0 Step -1
-
-                        concatenarserial = concatenarserial + " " + .GetItemText(.SelectedItems.Item(a)).ToString
-                        ' MsgBox(concatenarserial)
-                        a = a + 1
-                    Next
-                End With
 
                 Dim j, r As Integer
                 Dim concatenararticulo As String = ""
@@ -741,26 +713,24 @@ Public Class Reportes
 
                 r = 0
                 Dim flag As String = 0
-                With ListBoxArticulos
-                    For j = .SelectedItems.Count - 1 To 0 Step -1
-                        Dim consultaarticuloH As New MySqlCommand("select tipoArticuloH from inventariohardware where codigoArticuloH='" & .GetItemText(.SelectedItems.Item(r)).ToString() & "' or serialArticuloSoft='" & .GetItemText(.SelectedItems.Item(r)).ToString() & "'", llamadoarticulo.conexion)
-                        llamadoarticulo.AbrirConexion()
+
+
+                Dim consultaarticuloH As New MySqlCommand("select tipoArticuloH from inventariohardware where codigoArticuloH='" & comboCodigoArticulo.SelectedItem & "' or serialArticuloSoft='" & comboCodigoArticulo.SelectedItem & "'", llamadoarticulo.conexion)
+                llamadoarticulo.AbrirConexion()
                         Dim leer0 As MySqlDataReader = consultaarticuloH.ExecuteReader()
                         If leer0.Read Then
                             concatenararticuloH = concatenararticuloH + " " + leer0(0)
                         End If
                         llamadoarticulo.CerrarConexion()
 
-                        Dim consultaarticuloA As New MySqlCommand("select articuloA from inventarioactivos where serialMovilco='" & .GetItemText(.SelectedItems.Item(r)).ToString() & "' or serialArticuloA='" & .GetItemText(.SelectedItems.Item(r)).ToString() & "'", llamadoarticulo.conexion)
-                        llamadoarticulo.AbrirConexion()
+                Dim consultaarticuloA As New MySqlCommand("select articuloA from inventarioactivos where serialMovilco='" & comboCodigoArticulo.SelectedItem & "' or serialArticuloA='" & comboCodigoArticulo.SelectedItem & "'", llamadoarticulo.conexion)
+                llamadoarticulo.AbrirConexion()
                         Dim leer1 As MySqlDataReader = consultaarticuloA.ExecuteReader()
                         If leer1.Read Then
                             concatenararticuloA = concatenararticuloA + " " + leer1(0)
                         End If
                         llamadoarticulo.CerrarConexion()
-                        r = r + 1
-                    Next
-                End With
+
 
                 If concatenararticuloH <> "" Then
                     concatenararticulo = concatenararticuloH
@@ -799,7 +769,7 @@ Public Class Reportes
 
                     Dim datos As New connection
                     Dim consultaa As New MySqlCommand("update inventariohardware set oficinaH='" & lblOficinaDest.Text & "' 
-WHERE codigoArticuloH='" & ListBoxArticulos.SelectedItem & "' or serialArticuloSoft='" & ListBoxArticulos.SelectedItem & "'", datos.conexion)
+WHERE codigoArticuloH='" & comboCodigoArticulo.SelectedItem & "' or serialArticuloSoft='" & comboCodigoArticulo.SelectedItem & "'", datos.conexion)
                     datos.AbrirConexion()
                     consultaa.ExecuteNonQuery()
                     datos.CerrarConexion()
@@ -808,7 +778,7 @@ WHERE codigoArticuloH='" & ListBoxArticulos.SelectedItem & "' or serialArticuloS
 
                     Dim datos1 As New connection
                     Dim consultaa1 As New MySqlCommand("update inventarioactivos set oficinaG='" & lblOficinaDest.Text & "' 
-WHERE serialMovilco='" & ListBoxArticulos.SelectedItem & "' or serialArticuloA='" & ListBoxArticulos.SelectedItem & "'", datos1.conexion)
+WHERE serialMovilco='" & comboCodigoArticulo.SelectedItem & "' or serialArticuloA='" & comboCodigoArticulo.SelectedItem & "'", datos1.conexion)
                     datos1.AbrirConexion()
                     consultaa1.ExecuteNonQuery()
                     datos1.CerrarConexion()
@@ -817,9 +787,9 @@ WHERE serialMovilco='" & ListBoxArticulos.SelectedItem & "' or serialArticuloA='
                     MsgBox("ERROR EN CONEXION A BASE DE DATOS", MsgBoxStyle.Critical, "INFORMACION")
                 End Try
 
-                ListBoxArticulos.Text = "Seleccionar"
+                comboCodigoArticulo.Text = "Seleccionar"
                 comboDestinatarioR.Text = "Seleccionar"
-                comboRemitenteR.Text = "Seleccionar"
+                comboCodigoArticulo.Text = "Seleccionar"
 
                 lblParaDestinatario.Text = ""
                 lblEncargadoDest.Text = ""
@@ -847,13 +817,13 @@ WHERE serialMovilco='" & ListBoxArticulos.SelectedItem & "' or serialArticuloA='
                 Loading.TimerLoading.Start()
 
                 ' se utiliza para limpiar lo que esta seleccionado en el listbox luego de guardar los datos.
-                ListBoxArticulos.ClearSelected()
+                comboCodigoArticulo.Items.Clear()
 
 
             Else
 
-                If ListBoxArticulos.Text = "Seleccionar" Or comboDestinatarioR.Text = "Seleccionar" Or comboRemitenteR.Text = "Seleccionar" Then
-                    ListBoxArticulos.Visible = False
+                If comboCodigoArticulo.Text = "Seleccionar" Or comboDestinatarioR.Text = "Seleccionar" Or comboCodigoArticulo.Text = "Seleccionar" Then
+
                     MsgBox("ELIJA UN ITEM VALIDO")
                 Else
                     MsgBox("NO HAY DATOS PARA ALMACENAR", MsgBoxStyle.Information, "INFORMACIÓN")
@@ -1032,40 +1002,6 @@ WHERE serialMovilco='" & ListBoxArticulos.SelectedItem & "' or serialArticuloA='
 
     End Sub
 
-    Private Sub PictureBox3_Click(sender As Object, e As EventArgs) Handles PictureBox3.Click
-        If cerrar = 0 Then
-            ListBoxArticulos.Visible = True
-            cerrar = 1
-        Else
-            ListBoxArticulos.Visible = False
-            cerrar = 0
-        End If
-
-
-    End Sub
-
-    Private Sub ListBoxArticulos_MouseLeave(sender As Object, e As EventArgs) Handles ListBoxArticulos.MouseLeave
-        '  ListBoxArticulos.Visible = False
-    End Sub
-
-    Private Sub ListBoxArticulos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBoxArticulos.SelectedIndexChanged
-
-        Dim concatenarserial As String = ""
-
-        Dim i, a As Integer
-        a = 0
-        With ListBoxArticulos
-            For i = .SelectedItems.Count - 1 To 0 Step -1
-
-                concatenarserial = concatenarserial + " " + .GetItemText(.SelectedItems.Item(a)).ToString
-
-                a = a + 1
-            Next
-            TextBoxBusqueda.Text = concatenarserial
-        End With
-
-    End Sub
-
     Private Sub Reportes_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
 
         'Aquí crea tus controles.
@@ -1096,11 +1032,9 @@ WHERE serialMovilco='" & ListBoxArticulos.SelectedItem & "' or serialArticuloA='
     End Sub
 
     Private Sub RadioSistemas_CheckedChanged(sender As Object, e As EventArgs) Handles RadioSistemas.CheckedChanged
-        PictureBox3.Enabled = True
-        ListBoxArticulos.Enabled = True
 
         Dim llamadoHardware As New connection
-        ListBoxArticulos.Items.Clear()
+            comboCodigoArticulo.Items.Clear()
         If RadioSistemas.Checked = True Then
             Dim consultaHardware As New MySqlCommand("SELECT codigoArticuloH, serialArticuloSoft FROM inventariohardware ", llamadoHardware.conexion)
             llamadoHardware.AbrirConexion()
@@ -1109,22 +1043,24 @@ WHERE serialMovilco='" & ListBoxArticulos.SelectedItem & "' or serialArticuloA='
             If leerHardware.HasRows Then
                 While leerHardware.Read
 
-                    ListBoxArticulos.Items.Add(leerHardware("codigoArticuloH"))
-                    ListBoxArticulos.Items.Add(leerHardware("serialArticuloSoft"))
+                    comboCodigoArticulo.Items.Add(leerHardware("codigoArticuloH"))
+                    comboCodigoArticulo.Items.Add(leerHardware("serialArticuloSoft"))
 
                 End While
+
             End If
+            comboCodigoArticulo.Text = comboCodigoArticulo.Items.Item(0)
         End If
         llamadoHardware.CerrarConexion()
+
+
 
     End Sub
 
     Private Sub RadioActivos_CheckedChanged(sender As Object, e As EventArgs) Handles RadioActivos.CheckedChanged
-        PictureBox3.Enabled = True
-        ListBoxArticulos.Enabled = True
 
         Dim llamadoActivos As New connection
-        ListBoxArticulos.Items.Clear()
+            comboCodigoArticulo.Items.Clear()
         If RadioActivos.Checked = True Then
             Dim consultaActivos As New MySqlCommand("SELECT serialMovilco,serialArticuloA FROM inventarioactivos", llamadoActivos.conexion)
             llamadoActivos.AbrirConexion()
@@ -1133,31 +1069,22 @@ WHERE serialMovilco='" & ListBoxArticulos.SelectedItem & "' or serialArticuloA='
             If leerActivos.HasRows Then
                 While leerActivos.Read
 
-                    ListBoxArticulos.Items.Add(leerActivos("serialMovilco"))
-                    ListBoxArticulos.Items.Add(leerActivos("serialArticuloA"))
+                    comboCodigoArticulo.Items.Add(leerActivos("serialMovilco"))
+                    comboCodigoArticulo.Items.Add(leerActivos("serialArticuloA"))
 
                 End While
             End If
+            comboCodigoArticulo.Text = comboCodigoArticulo.Items.Item(0)
         End If
         llamadoActivos.CerrarConexion()
 
+
+
+
     End Sub
 
-    Private Sub ComboDestinatarioR_Click(sender As Object, e As EventArgs) Handles comboDestinatarioR.Click
-        ListBoxArticulos.Visible = False
-    End Sub
 
-    Private Sub ComboRemitenteR_Click(sender As Object, e As EventArgs) Handles comboRemitenteR.Click
-        ListBoxArticulos.Visible = False
-    End Sub
 
-    Private Sub TabRemisiones_Click(sender As Object, e As EventArgs) Handles tabRemisiones.Click
-        ListBoxArticulos.Visible = False
-    End Sub
-
-    Private Sub Panel2_Click(sender As Object, e As EventArgs) Handles Panel3.Click, Panel2.Click
-        ListBoxArticulos.Visible = False
-    End Sub
 
     Private Sub TextBoxMostrarImg_KeyDown(sender As Object, e As KeyEventArgs) Handles TextBoxMostrarImg.KeyDown
         If e.KeyCode = Keys.Enter Then
@@ -1295,111 +1222,28 @@ WHERE serialMovilco='" & ListBoxArticulos.SelectedItem & "' or serialArticuloA='
         End Try
     End Sub
 
-    Private Sub TextBoxBusqueda_Click(sender As Object, e As EventArgs) Handles TextBoxBusqueda.Click
-        If cerrar = 0 Then
-            ListBoxArticulos.Visible = True
-            cerrar = 1
-        Else
-            ListBoxArticulos.Visible = False
-            cerrar = 0
+    Private Sub ComboBoxRemitentes_SelectedValueChanged(sender As Object, e As EventArgs) Handles ComboBoxRemitentes.SelectedValueChanged
+        'Se creara el codigo para que dependiendo del item seleccionado se llenen los campos de reportes o remision
+
+        Dim llamado As New connection
+        Dim consulta As New MySqlCommand("SELECT * FROM `destinatarios_remitentes` WHERE encargadoD='" & ComboBoxRemitentes.SelectedItem & "' ", llamado.conexion)
+        llamado.AbrirConexion()
+        Dim leer As MySqlDataReader = consulta.ExecuteReader()
+
+        If leer.Read Then
+
+            lblDeRemit.Text = leer(2)
+            lblCargoRemit.Text = leer(6)
+            lblOficinaRemit.Text = leer(3)
+            lblDireccionRemit.Text = leer(4)
+            lblCelularRemit.Text = leer(5)
+
+
+
         End If
 
+        llamado.CerrarConexion()
     End Sub
 
-    Private Sub TextBoxBusqueda_TextChanged(sender As Object, e As EventArgs) Handles TextBoxBusqueda.TextChanged
 
-
-        'Codigo utilizado para cargar el ListBoxArticulos con los seriales de la tabla hardware.
-
-        Dim llamadoHardwares, llamadoHardwarea, llamadoActivosg, llamadoActivosa As New connection
-        If InventarioSH.Label4.Text = "SISTEMAS" Then
-
-            Dim consultaHardware As New MySqlCommand("SELECT codigoArticuloH, serialArticuloSoft FROM inventariohardware where codigoArticuloH like '%" & TextBoxBusqueda.Text & "%' or serialArticuloSoft like '%" & TextBoxBusqueda.Text & "%'", llamadoHardwares.conexion)
-            llamadoHardwares.AbrirConexion()
-            Dim leerHardware As MySqlDataReader = consultaHardware.ExecuteReader()
-
-            ListBoxArticulos.Items.Clear()
-
-            If leerHardware.HasRows Then
-                While leerHardware.Read
-
-                    ListBoxArticulos.Items.Add(leerHardware("codigoArticuloH"))
-                    ListBoxArticulos.Items.Add(leerHardware("serialArticuloSoft"))
-
-                End While
-            End If
-            llamadoHardwares.CerrarConexion()
-        ElseIf InventarioSH.Label4.Text = "GENERAL" Then
-
-            Dim consultaActivos As New MySqlCommand("SELECT serialMovilco,serialArticuloA FROM inventarioactivos where serialMovilco like '%" & TextBoxBusqueda.Text & "%' or serialArticuloA like '%" & TextBoxBusqueda.Text & "%'", llamadoActivosg.conexion)
-            llamadoActivosg.AbrirConexion()
-            Dim leerActivos As MySqlDataReader = consultaActivos.ExecuteReader()
-
-            ListBoxArticulos.Items.Clear()
-
-            If leerActivos.HasRows Then
-                While leerActivos.Read
-
-                    ListBoxArticulos.Items.Add(leerActivos("serialMovilco"))
-                    ListBoxArticulos.Items.Add(leerActivos("serialArticuloA"))
-
-                End While
-            End If
-            llamadoActivosg.CerrarConexion()
-        ElseIf InventarioSH.Label4.Text = "ADMINISTRADOR" Then
-            Dim consultaActivos As New MySqlCommand("SELECT serialMovilco,serialArticuloA FROM inventarioactivos where serialMovilco like '%" & TextBoxBusqueda.Text & "%' or serialArticuloA like '%" & TextBoxBusqueda.Text & "%'", llamadoActivosg.conexion)
-            llamadoActivosg.AbrirConexion()
-            Dim leerActivos As MySqlDataReader = consultaActivos.ExecuteReader()
-
-            ListBoxArticulos.Items.Clear()
-
-            If leerActivos.HasRows Then
-                While leerActivos.Read
-
-                    ListBoxArticulos.Items.Add(leerActivos("serialMovilco"))
-                    ListBoxArticulos.Items.Add(leerActivos("serialArticuloA"))
-
-                End While
-            End If
-            llamadoActivosg.CerrarConexion()
-
-
-            Dim consultaHardwarea As New MySqlCommand("SELECT codigoArticuloH, serialArticuloSoft FROM inventariohardware where codigoArticuloH like '%" & TextBoxBusqueda.Text & "%' or serialArticuloSoft like '%" & TextBoxBusqueda.Text & "%'", llamadoHardwarea.conexion)
-            llamadoHardwarea.AbrirConexion()
-            Dim leerHardwarea As MySqlDataReader = consultaHardwarea.ExecuteReader()
-
-            ListBoxArticulos.Items.Clear()
-
-            If leerHardwarea.HasRows Then
-                While leerHardwarea.Read
-
-                    ListBoxArticulos.Items.Add(leerHardwarea("codigoArticuloH"))
-                    ListBoxArticulos.Items.Add(leerHardwarea("serialArticuloSoft"))
-
-                End While
-            End If
-            llamadoHardwarea.CerrarConexion()
-
-        Else
-            MsgBox("ERROR CON LA BASE DE DATOS", MsgBoxStyle.Critical, "ADVERTENCIA")
-        End If
-
-
-        'Try
-        '    Dim conexion As New connection
-        '    conexion.AbrirConexion()
-        '    Dim cmd5 As New MySqlCommand("SELECT `serialMovilco`,`serialArticuloA` FROM `inventarioactivos` where serialMovilco='" & TextBoxBusqueda.Text & "'", conexion.conexion)
-
-        '    Dim datas101 As New DataSet
-        '    Dim adaptador101 As New MySqlDataAdapter(cmd5)
-        '    adaptador101.Fill(datas101, "inventarioactivos")
-        '    ListBoxArticulos.DataSource = datas101.Tables("inventarioactivos")
-
-        '    conexion.CerrarConexion()
-        'Catch ex As Exception
-
-        '    MsgBox("ERROR EN LA CONEXION A BASE DE DATOS " + ex.Message, MsgBoxStyle.Information, "INFORMACION")
-
-        'End Try
-    End Sub
 End Class
