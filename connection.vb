@@ -8,8 +8,8 @@ Public Class connection
     'BLOQUE UTILIZADO PARA INICIAR BD E ABRIR LA CONEXION.19-05-2019
     Public Sub AbrirConexion()
         Try
-            'conexion.ConnectionString = "server=167.114.216.134;database=MovilcoBD;user id=bdMovilco;password=inventariomovilco;"
-            conexion.ConnectionString = "server=127.0.0.1;database=bd_movilco;user id=root;password=;"
+            conexion.ConnectionString = "server=167.114.216.134;database=MovilcoBD;user id=bdMovilco;password=inventariomovilco;"
+            ' conexion.ConnectionString = "server=127.0.0.1;database=bd_movilco;user id=root;password=;"
             conexion.Open()
 
         Catch ex As Exception

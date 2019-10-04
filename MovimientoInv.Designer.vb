@@ -35,21 +35,21 @@ Partial Class MovimientoInv
         Me.lblNombreEstado = New System.Windows.Forms.Label()
         Me.ButtonExportar = New System.Windows.Forms.Button()
         Me.ButtonLimpiarB = New System.Windows.Forms.Button()
+        Me.RadioButtonMovSist = New System.Windows.Forms.RadioButton()
+        Me.RadioButtonMovActi = New System.Windows.Forms.RadioButton()
+        Me.RadioButtonTodos = New System.Windows.Forms.RadioButton()
+        Me.botonActualizarEstado = New System.Windows.Forms.Button()
+        Me.ButtonInvAc = New System.Windows.Forms.Button()
+        Me.ButtonInvSist = New System.Windows.Forms.Button()
+        Me.ButtonMovimiento = New System.Windows.Forms.Button()
         Me.DataGridView111 = New System.Windows.Forms.DataGridView()
         Me.LabelCantidad = New System.Windows.Forms.Label()
         Me.LabelCantidadArt = New System.Windows.Forms.Label()
         Me.lblEstado = New System.Windows.Forms.Label()
         Me.LabelTituloEstado = New System.Windows.Forms.Label()
-        Me.RadioButtonMovSist = New System.Windows.Forms.RadioButton()
-        Me.RadioButtonMovActi = New System.Windows.Forms.RadioButton()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.RadioButtonTodos = New System.Windows.Forms.RadioButton()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.botonActualizarEstado = New System.Windows.Forms.Button()
-        Me.ButtonInvAc = New System.Windows.Forms.Button()
-        Me.ButtonInvSist = New System.Windows.Forms.Button()
-        Me.ButtonMovimiento = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridView111, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -172,83 +172,6 @@ Partial Class MovimientoInv
         Me.ToolTipMovimientos.SetToolTip(Me.ButtonLimpiarB, "Limpiar caja de texto")
         Me.ButtonLimpiarB.UseVisualStyleBackColor = False
         '
-        'DataGridView111
-        '
-        Me.DataGridView111.AllowUserToAddRows = False
-        Me.DataGridView111.AllowUserToDeleteRows = False
-        Me.DataGridView111.AllowUserToOrderColumns = True
-        Me.DataGridView111.AllowUserToResizeColumns = False
-        Me.DataGridView111.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
-        Me.DataGridView111.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.DataGridView111.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader
-        Me.DataGridView111.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
-        Me.DataGridView111.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.DataGridView111.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView111.DefaultCellStyle = DataGridViewCellStyle2
-        Me.DataGridView111.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.DataGridView111.GridColor = System.Drawing.SystemColors.Highlight
-        Me.DataGridView111.Location = New System.Drawing.Point(6, 129)
-        Me.DataGridView111.Name = "DataGridView111"
-        Me.DataGridView111.RowHeadersVisible = False
-        Me.DataGridView111.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        Me.DataGridView111.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView111.Size = New System.Drawing.Size(778, 422)
-        Me.DataGridView111.TabIndex = 4
-        '
-        'LabelCantidad
-        '
-        Me.LabelCantidad.AutoSize = True
-        Me.LabelCantidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCantidad.ForeColor = System.Drawing.Color.Red
-        Me.LabelCantidad.Location = New System.Drawing.Point(690, 630)
-        Me.LabelCantidad.Name = "LabelCantidad"
-        Me.LabelCantidad.Size = New System.Drawing.Size(26, 29)
-        Me.LabelCantidad.TabIndex = 5
-        Me.LabelCantidad.Text = "0"
-        Me.LabelCantidad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'LabelCantidadArt
-        '
-        Me.LabelCantidadArt.AutoSize = True
-        Me.LabelCantidadArt.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCantidadArt.ForeColor = System.Drawing.Color.Black
-        Me.LabelCantidadArt.Location = New System.Drawing.Point(636, 604)
-        Me.LabelCantidadArt.Name = "LabelCantidadArt"
-        Me.LabelCantidadArt.Size = New System.Drawing.Size(140, 20)
-        Me.LabelCantidadArt.TabIndex = 8
-        Me.LabelCantidadArt.Text = "Cantidad articulos:"
-        '
-        'lblEstado
-        '
-        Me.lblEstado.AutoSize = True
-        Me.lblEstado.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblEstado.ForeColor = System.Drawing.Color.Navy
-        Me.lblEstado.Location = New System.Drawing.Point(184, 635)
-        Me.lblEstado.Name = "lblEstado"
-        Me.lblEstado.Size = New System.Drawing.Size(0, 15)
-        Me.lblEstado.TabIndex = 10
-        Me.lblEstado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'LabelTituloEstado
-        '
-        Me.LabelTituloEstado.AutoSize = True
-        Me.LabelTituloEstado.Font = New System.Drawing.Font("Lucida Sans", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelTituloEstado.ForeColor = System.Drawing.Color.Red
-        Me.LabelTituloEstado.Location = New System.Drawing.Point(255, 565)
-        Me.LabelTituloEstado.Name = "LabelTituloEstado"
-        Me.LabelTituloEstado.Size = New System.Drawing.Size(300, 18)
-        Me.LabelTituloEstado.TabIndex = 14
-        Me.LabelTituloEstado.Text = "ACTUALIZAR ESTADO DEL ARTICULO:"
-        '
         'RadioButtonMovSist
         '
         Me.RadioButtonMovSist.AutoSize = True
@@ -273,18 +196,6 @@ Partial Class MovimientoInv
         Me.RadioButtonMovActi.UseVisualStyleBackColor = True
         Me.RadioButtonMovActi.Visible = False
         '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.Red
-        Me.Label3.Location = New System.Drawing.Point(237, 56)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(99, 16)
-        Me.Label3.TabIndex = 18
-        Me.Label3.Text = "FILTRAR POR:"
-        Me.Label3.Visible = False
-        '
         'RadioButtonTodos
         '
         Me.RadioButtonTodos.AutoSize = True
@@ -296,28 +207,6 @@ Partial Class MovimientoInv
         Me.ToolTipMovimientos.SetToolTip(Me.RadioButtonTodos, "Mostrar todos los Movimientos")
         Me.RadioButtonTodos.UseVisualStyleBackColor = True
         Me.RadioButtonTodos.Visible = False
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.Red
-        Me.Label4.Location = New System.Drawing.Point(5, 56)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(210, 16)
-        Me.Label4.TabIndex = 20
-        Me.Label4.Text = "ELIJA UN TIPO DE INVENTARIO:"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ForeColor = System.Drawing.Color.Red
-        Me.Label5.Location = New System.Drawing.Point(491, 55)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(161, 16)
-        Me.Label5.TabIndex = 21
-        Me.Label5.Text = " TIPOS DE INVENTARIO:"
         '
         'botonActualizarEstado
         '
@@ -402,6 +291,117 @@ Partial Class MovimientoInv
         Me.ToolTipMovimientos.SetToolTip(Me.ButtonMovimiento, "Movimientos")
         Me.ButtonMovimiento.UseVisualStyleBackColor = False
         Me.ButtonMovimiento.Visible = False
+        '
+        'DataGridView111
+        '
+        Me.DataGridView111.AllowUserToAddRows = False
+        Me.DataGridView111.AllowUserToDeleteRows = False
+        Me.DataGridView111.AllowUserToOrderColumns = True
+        Me.DataGridView111.AllowUserToResizeColumns = False
+        Me.DataGridView111.AllowUserToResizeRows = False
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        Me.DataGridView111.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.DataGridView111.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader
+        Me.DataGridView111.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
+        Me.DataGridView111.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.DataGridView111.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView111.DefaultCellStyle = DataGridViewCellStyle2
+        Me.DataGridView111.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
+        Me.DataGridView111.GridColor = System.Drawing.SystemColors.Highlight
+        Me.DataGridView111.Location = New System.Drawing.Point(6, 129)
+        Me.DataGridView111.Name = "DataGridView111"
+        Me.DataGridView111.RowHeadersVisible = False
+        Me.DataGridView111.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
+        Me.DataGridView111.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DataGridView111.Size = New System.Drawing.Size(778, 422)
+        Me.DataGridView111.TabIndex = 4
+        '
+        'LabelCantidad
+        '
+        Me.LabelCantidad.AutoSize = True
+        Me.LabelCantidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelCantidad.ForeColor = System.Drawing.Color.Red
+        Me.LabelCantidad.Location = New System.Drawing.Point(690, 630)
+        Me.LabelCantidad.Name = "LabelCantidad"
+        Me.LabelCantidad.Size = New System.Drawing.Size(26, 29)
+        Me.LabelCantidad.TabIndex = 5
+        Me.LabelCantidad.Text = "0"
+        Me.LabelCantidad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'LabelCantidadArt
+        '
+        Me.LabelCantidadArt.AutoSize = True
+        Me.LabelCantidadArt.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelCantidadArt.ForeColor = System.Drawing.Color.Black
+        Me.LabelCantidadArt.Location = New System.Drawing.Point(636, 604)
+        Me.LabelCantidadArt.Name = "LabelCantidadArt"
+        Me.LabelCantidadArt.Size = New System.Drawing.Size(140, 20)
+        Me.LabelCantidadArt.TabIndex = 8
+        Me.LabelCantidadArt.Text = "Cantidad articulos:"
+        '
+        'lblEstado
+        '
+        Me.lblEstado.AutoSize = True
+        Me.lblEstado.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblEstado.ForeColor = System.Drawing.Color.Navy
+        Me.lblEstado.Location = New System.Drawing.Point(184, 635)
+        Me.lblEstado.Name = "lblEstado"
+        Me.lblEstado.Size = New System.Drawing.Size(0, 15)
+        Me.lblEstado.TabIndex = 10
+        Me.lblEstado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'LabelTituloEstado
+        '
+        Me.LabelTituloEstado.AutoSize = True
+        Me.LabelTituloEstado.Font = New System.Drawing.Font("Lucida Sans", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelTituloEstado.ForeColor = System.Drawing.Color.Red
+        Me.LabelTituloEstado.Location = New System.Drawing.Point(255, 565)
+        Me.LabelTituloEstado.Name = "LabelTituloEstado"
+        Me.LabelTituloEstado.Size = New System.Drawing.Size(291, 18)
+        Me.LabelTituloEstado.TabIndex = 14
+        Me.LabelTituloEstado.Text = "ACTUALIZAR ESTADO DEL ARTICULO:"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.Red
+        Me.Label3.Location = New System.Drawing.Point(237, 56)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(99, 16)
+        Me.Label3.TabIndex = 18
+        Me.Label3.Text = "FILTRAR POR:"
+        Me.Label3.Visible = False
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.Red
+        Me.Label4.Location = New System.Drawing.Point(5, 56)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(210, 16)
+        Me.Label4.TabIndex = 20
+        Me.Label4.Text = "ELIJA UN TIPO DE INVENTARIO:"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.Red
+        Me.Label5.Location = New System.Drawing.Point(491, 55)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(161, 16)
+        Me.Label5.TabIndex = 21
+        Me.Label5.Text = " TIPOS DE INVENTARIO:"
         '
         'MovimientoInv
         '
